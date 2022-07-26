@@ -1,0 +1,37 @@
+{% extends 'navBar.html'%}
+
+{% load static %}
+
+{% block blockDinamico %}
+<section class="features-icons">
+    <div class="container">
+         <!-- Contact Section Form-->
+        <h1>Autores</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7" >
+                
+                <form  action="{% url 'Autores' %}" method="POST">{% csrf_token %} 
+                    <!-- Name input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="name" type="text"/>
+                        <label name="name">Nombre</label>
+                    </div>
+                    <!-- last_name address input-->
+                    <div class="form-floating mb-3">  
+                        <input class="form-control" name="last_name" type="text"/>
+                        <label name="last_name">Apellidos</label>
+                    </div>                    
+                    <!-- born input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="born" type="date" />
+                        <label name="born">Fecha de Nacimiento</label>
+                    </div>
+                    
+                    <!-- Submit Button-->
+                    <input class="btn btn-primary btn-xl" id="submitButton" value="Guardar" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock blockDinamico %}

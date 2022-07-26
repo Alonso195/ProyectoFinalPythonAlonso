@@ -1,0 +1,42 @@
+{% extends 'navBar.html'%}
+
+{% load static %}
+
+{% block blockDinamico %}
+<section class="features-icons">
+    <div class="container">
+         <!-- Contact Section Form-->
+        <h1>Libros</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7" >
+                
+                <form  action="{% url 'Libro' %}" method="POST">{% csrf_token %} 
+                    <!-- Name input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="name" type="text"/>
+                        <label name="name">Nombre Del Libro</label>
+                    </div>
+                    <!-- author address input-->
+                    <div class="form-floating mb-3">  
+                        <input class="form-control" name="author" type="text"/>
+                        <label name="author">Autores</label>
+                    </div>
+                    <!-- genre number input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="genre" type="text" />
+                        <label name="genre">Genero</label>
+                    </div>
+                    <!-- date input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="date" type="date" />
+                        <label name="date">Fecha de Publicacion</label>
+                    </div>
+                    
+                    <!-- Submit Button-->
+                    <input class="btn btn-primary btn-xl" id="submitButton" value="Guardar" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock blockDinamico %}
