@@ -1,0 +1,42 @@
+{% extends 'navBar.html'%}
+
+{% load static %}
+
+{% block blockDinamico %}
+<section class="features-icons">
+    <div class="container">
+         <!-- Contact Section Form-->
+        <h1>Contactenos</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7" >
+                
+                <form  action="{% url 'Contacto' %}" method="POST">{% csrf_token %} 
+                    <!-- Name input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="name" type="text"/>
+                        <label name="name">Nombre Completo</label>
+                    </div>
+                    <!-- Email address input-->
+                    <div class="form-floating mb-3">  
+                        <input class="form-control" name="email" type="email"/>
+                        <label name="email">Email</label>
+                    </div>
+                    <!-- Phone number input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="phone" type="tel" />
+                        <label name="phone">Numero de telefono</label>
+                    </div>
+                    <!-- Message input-->
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" name="message" type="text"style="height: 10rem"></textarea>
+                        <label name="message">Mensaje</label>
+                    </div>
+                    
+                    <!-- Submit Button-->
+                    <input class="btn btn-primary btn-xl" id="submitButton" value="Enviar" type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock blockDinamico %}
