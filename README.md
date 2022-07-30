@@ -15,7 +15,8 @@
 
 ## Resultados Proveedores CRUD
 
-    Se muestra una tabla para listar los proveedores, la pantala de confirmación para eliminar y el formulario usado para actualizar y crear 
+    Se muestra una tabla para listar los proveedores, la pantala de confirmación para eliminar
+    y el formulario usado para actualizar y crear 
 
 <img src="./ProyectoFinalPython/Resultados/listaProveedores.png" width="350">
 <img src="./ProyectoFinalPython/Resultados/formProveedores.png" width="350">
