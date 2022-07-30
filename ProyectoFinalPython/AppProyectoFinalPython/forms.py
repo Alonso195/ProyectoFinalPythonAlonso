@@ -17,3 +17,12 @@ class AuthorForm(forms.Form):
     name = forms.CharField()
     last_name = forms.CharField()    
     born = forms.DateField()  
+
+class ProveedorFormulario(forms.Form):
+    CodigoProveedor = forms.CharField()
+    Nombre = forms.CharField()
+    Apellidos = forms.CharField()  
+    Provincia = forms.CharField()  
+    Localidad = forms.CharField()  
+    Direccion = forms.CharField()  
+    Cuit = forms.CharField()

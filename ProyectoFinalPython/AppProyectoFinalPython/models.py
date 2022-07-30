@@ -20,3 +20,17 @@ class Author(models.Model):
     name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)    
     born = models.DateField()  
+
+
+class Proveedor(models.Model):
+    CodigoProveedor = models.CharField(max_length=200)
+    Nombre = models.CharField(max_length=200)
+    Apellidos = models.CharField(max_length=200)  
+    Provincia = models.CharField(max_length=500)  
+    Localidad = models.CharField(max_length=500)  
+    Direccion = models.CharField(max_length=1000)  
+    Cuit = models.CharField(max_length=1000)  
+
+
+    def __str__(self) -> str:
+        return f'Nombre: {self.Nombre} {self.Apellidos} - Código Proveedor: {self.CodigoProveedor}'

@@ -1,0 +1,54 @@
+{% extends 'navBar.html'%}
+
+{% load static %}
+
+{% block blockDinamico %}
+<section class="features-icons">
+  <div class="container">
+       <!-- Contact Section Form-->
+      <h1>Proveedores</h1>
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Codigo de Proveedor</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Provincia</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for proveedor in Proveedores %}
+          <tr>
+            <th scope="row">
+              <a href="{% url 'DetalleProveedores' proveedor.id %}">
+                {{proveedor.CodigoProveedor}}
+              </a>
+              
+            </th>
+            <td>{{proveedor.Nombre}}</td>
+            <td>{{proveedor.Apellidos}}</td>
+            <td>{{proveedor.Provincia}}</td>
+            <td>
+              <a type="button" class="btn btn-outline-primary" href="{% url 'ActualizaProveedores' proveedor.id %}">
+                Editar
+              </a>
+              <a type="button" class="btn btn-outline-danger" href="{% url 'EliminaProveedores' proveedor.id %}">
+                Eliminar
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+          
+        </tbody>
+      </table>
+    
+      <a type="button" class="btn btn-outline-primary" href="{% url 'CreaProveedores' %}">
+        Nuevo Proveedor
+      </a>
+  </div>
+</section>
+
+
+
+{% endblock blockDinamico %}

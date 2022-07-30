@@ -1,8 +1,10 @@
 
 from django.shortcuts import render
+from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DetailView
 
-from AppProyectoFinalPython.models import Contact, Book, Author
-from AppProyectoFinalPython.forms import ContactFormulario, BookForm, AuthorForm
+
+from AppProyectoFinalPython.models import Contact, Book, Author, Proveedor
+from AppProyectoFinalPython.forms import ContactFormulario, BookForm, AuthorForm, ProveedorFormulario
 
 def inicio(self):
     return render(self, "inicio.html")
@@ -51,3 +53,38 @@ def authors(self):
     else:
         
         return render(self, "authors.html")
+
+#------------------- PROVEEDORES VIEWS -------------------#
+class ProveedorList(ListView):
+
+    model = Proveedor
+    template_name = './Proveedores/proveedor_list.html'
+    context_object_name = 'Proveedores'
+
+class ProveedorDetail(DetailView):
+
+    model = Proveedor
+    template_name = './Proveedores/proveedor_detail.html'
+    context_object_name = 'Proveedor'
+
+class ProveedorCreate(CreateView):
+    model = Proveedor
+    template_name = './Proveedores/proveedor_create.html'
+    form_class: ProveedorFormulario
+    fields = [ "Nombre", "Apellidos", "CodigoProveedor", "Cuit", "Provincia", "Localidad", "Direccion"]
+    success_url = '/listaProveedores/' 
+
+
+class ProveedorUpdate(UpdateView):
+
+    model = Proveedor
+    template_name = './Proveedores/proveedor_update.html'
+    fields = ('__all__')
+    success_url = '/listaProveedores/'
+
+class ProveedorDelete(DeleteView):
+
+    model = Proveedor
+    template_name = './Proveedores/proveedor_delete.html'
+    success_url = '/listaProveedores/'
+

@@ -1,0 +1,30 @@
+{% extends 'navBar.html'%}
+
+{% load static %}
+
+{% block blockDinamico %}
+<section class="features-icons">
+    <div class="container">        
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7" >
+                <div class="card">
+                    <h5 class="card-header">Detalle Proveedor</h5>
+                    <div class="card-body">
+                      <h5 class="card-title">{{Proveedor}}</h5>
+                      <p class="card-text">Provincia: {{Proveedor.Provincia}}</p>
+                      <p class="card-text">Localidad: {{Proveedor.Localidad}}</p>
+                      <p class="card-text">Dirección: {{Proveedor.Direccion}}</p>
+                      <p class="card-text">Cuit: {{Proveedor.Cuit}}</p>
+
+                      <a type="button" class="btn btn-outline-primary" href="{% url 'ListaProveedores' %}">
+                        Volver
+                      </a>
+                    </div>
+                </div>
+               
+            </div>        
+        </div>
+
+    </div>
+</section>
+{% endblock blockDinamico %}
