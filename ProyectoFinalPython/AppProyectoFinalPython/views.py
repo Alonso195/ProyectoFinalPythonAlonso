@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DetailView
 
 
-from AppProyectoFinalPython.models import Contact, Book, Author, Proveedor
-from AppProyectoFinalPython.forms import ContactFormulario, BookForm, AuthorForm, ProveedorFormulario
+from AppProyectoFinalPython.models import Contact, Proveedor
+from AppProyectoFinalPython.forms import ContactFormulario, ProveedorFormulario
 
 def inicio(self):
     return render(self, "inicio.html")
@@ -23,36 +23,6 @@ def contactUs(self):
     else:
         
         return render(self, "contactUs.html")
-
-def books(self):
-    
-    if (self.method == 'POST'):
-        bookForm = BookForm(self.POST)
-        print(bookForm.is_valid())
-        print(self.POST)
-        if bookForm.is_valid():
-            data = bookForm.cleaned_data
-            book = Book(name=data['name'], author=data['author'], genre=data['genre'], date=data['date'])
-            book.save()
-            return render(self,'inicio.html')
-    else:
-        
-        return render(self, "books.html")
-
-def authors(self):
-    
-    if (self.method == 'POST'):
-        authorForm = AuthorForm(self.POST)
-        print(authorForm.is_valid())
-        print(self.POST)
-        if authorForm.is_valid():
-            data = authorForm.cleaned_data
-            author = Author(name=data['name'], last_name=data['last_name'], born=data['born'])
-            author.save()
-            return render(self,'inicio.html')
-    else:
-        
-        return render(self, "authors.html")
 
 #------------------- PROVEEDORES VIEWS -------------------#
 class ProveedorList(ListView):
