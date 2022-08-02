@@ -28,5 +28,6 @@
     Se muestra la tabla para listar los articulos y crearlos.
 
 
-<img src="./ProyectoFinalPython/Resultados/frmArticulos.png" width="350">
-<img src="./ProyectoFinalPython/Resultados/frmNuevoArticulo.png" width="350">
+<img src="./ProyectoFinalPython/Resultados/frmArticulos.jpg" width="350">
+<img src="./ProyectoFinalPython/Resultados/frmNuevoArticulo.jpg" width="350">
+
