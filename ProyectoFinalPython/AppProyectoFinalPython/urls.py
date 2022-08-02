@@ -1,10 +1,12 @@
 from django.urls import path
-from AppProyectoFinalPython.views import inicio, contactUs
+from AppProyectoFinalPython.views import inicio, contactUs, buscarProveedor
 from AppProyectoFinalPython.views import ProveedorCreate, ProveedorDelete, ProveedorDetail, ProveedorList, ProveedorUpdate,ClienteCreate, ClienteDelete, ClienteDetail, ClienteUpdate,ClienteList,ArticuloList,ArticuloDetail,ArticuloCreate,ArticuloUpdate,ArticuloDelete
 
 urlpatterns = [    
     path('', inicio, name='Inicio'),
     path('contacto/', contactUs, name='Contacto'),  
+    path('buscarProveedor/', buscarProveedor, name='BuscarProveedor'),  
+
 
     path('listaProveedores/', ProveedorList.as_view(), name="ListaProveedores"),
     path('detalleProveedores/<int:pk>', ProveedorDetail.as_view(), name="DetalleProveedores"),

@@ -1,7 +1,7 @@
 
 from django.shortcuts import render
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DetailView
-
+from django.http import HttpResponse
 
 from AppProyectoFinalPython.models import Contact, Proveedor,Cliente,Articulo
 from AppProyectoFinalPython.forms import ContactFormulario, ProveedorFormulario,ClienteFormulario,ArticuloFormulario
@@ -23,6 +23,23 @@ def contactUs(self):
     else:
         
         return render(self, "contactUs.html")
+
+def buscarProveedor(request):
+ 
+
+    if request.GET["codigo"]:
+
+        codigo = request.GET["codigo"]
+
+        Proveedores = Proveedor.objects.filter(CodigoProveedor__icontains=codigo)
+
+        return render(request, "./Proveedores/proveedor_list.html", {"Proveedores": Proveedores, "codigo": codigo})
+
+    else:
+
+        respuesta = "No enviaste datos"
+
+    return HttpResponse(respuesta)
 
 #------------------- PROVEEDORES VIEWS -------------------#
 class ProveedorList(ListView):
