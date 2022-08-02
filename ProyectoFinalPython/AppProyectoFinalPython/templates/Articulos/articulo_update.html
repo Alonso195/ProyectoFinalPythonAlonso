@@ -1,0 +1,55 @@
+{% extends 'navBar.html'%}
+
+{% load static %}
+
+{% block blockDinamico %}
+<section class="features-icons bg-light text-center">
+    <div class="container">
+         <!-- Contact Section Form-->
+        <h1>Actualizar Articulo</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7" >
+                
+                <form  action="{% url 'ActualizaArticulos' articulo.id %}" method="POST">{% csrf_token %} 
+                    <!-- Codigo input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="CodigoArticulo" value={{articulo.CodigoArticulo}} type="text"/>
+                        <label name="Nombre">Nombre</label>
+                    </div>
+                    <!-- Descripcion input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="Descripcion" value={{articulo.Descripcion}} type="text"/>
+                        <label name="Descripcion">Descripcion</label>
+                    </div>
+                    <!-- Color address input-->
+                    <div class="form-floating mb-3">  
+                        <input class="form-control" name="Color" value={{articulo.Color}} type="text"/>
+                        <label name="Color">Color Articulo</label>
+                    </div>
+                    <!-- Talle input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="Talle" value={{articulo.Talle}} type="text">
+                        <label name="Talle">Cuit</label>
+                    </div>
+                    <!-- Precio number input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="Precio" value={{articulo.Precio}} type="text" />
+                        <label name="Articulo">Precio</label>
+                    </div>
+                    <!-- CodigoBarra input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="CodigoBarra" value={{articulo.CodigoBarra}} type="text">
+                        <label name="CodigoBarra">Codigo de Barra</label>
+                    </div>
+                    
+                    
+                    
+                    <!-- Submit Button-->
+                    <input class="btn btn-outline-primary btn-xl" id="submitButton" value="Guardar Articulo" type="submit">
+                </form>
+            </div>        
+        </div>
+
+    </div>
+</section>
+{% endblock blockDinamico %}

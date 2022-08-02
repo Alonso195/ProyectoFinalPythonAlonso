@@ -21,7 +21,7 @@ class Proveedor(models.Model):
     def __str__(self) -> str:
         return f'Nombre: {self.Nombre} {self.Apellidos} - Código Proveedor: {self.CodigoProveedor}'
 
-
+""" 
 class Articulos(models.Model):
     CodItm = models.CharField(max_length=8, unique=True) # se hace unique para que sea codigo unico
     Descripcion = models.CharField(max_length=20)
@@ -33,21 +33,46 @@ class Articulos(models.Model):
         verbose_name_plural = 'Articulos'
         ordering = ('Descripcion','-CodItm') # desciendiente por coditm
         unique_together = ('CodItm', 'Descripcion') # de esta forma nose puden repetir ni nombre ni descricopnm ala vez
+ """
 
 
 class Cliente(models.Model):
-    CodClie = models.CharField(max_length=8)
-    NombreyApellido = models.CharField(max_length=30)
+    CodigoCliente = models.CharField(max_length=8)
+    Nombre = models.CharField(max_length=30)
+    Apellidos = models.CharField(max_length=30)
     Provincia = models.CharField(max_length=20)
     Localidad = models.CharField(max_length=20)
     Direccion = models.CharField(max_length=30)
     Cuit = models.CharField(max_length=11)
     
     def __str__(self) -> str:
-        return f'{self.CodClie} - {self.NombreyApellido}'
+        return f'Nombre: {self.Nombre} {self.Apellidos} - Código Cliente: {self.CodigoCliente}'
  
 
+class Articulo(models.Model):
+    CodigoArticulo = models.CharField(max_length=8)
+    Descripcion = models.CharField(max_length=30)
+    Color = models.CharField(max_length=30)
+    Talle = models.CharField(max_length=20)
+    Precio = models.CharField(max_length=20)
+    CodigoBarra = models.CharField(max_length=30)
+        
+    def __str__(self) -> str:
+        return f'Codigo: {self.CodigoArticulo} - Descripcion: {self.Descripcion}'
+
+""" class Articulo2(models.Model):
+    CodigoArticulo = models.CharField(max_length=8)
+    Descripcion = models.CharField(max_length=30)
+    Color = models.CharField(max_length=30)
+    Talle = models.CharField(max_length=20)
+    Precio = models.CharField(max_length=20)
+    CodigoBarra = models.CharField(max_length=30)
+        
+    def __str__(self) -> str:
+        return f'Codigo: {self.CodigoArticulo} - Descripcion: {self.Descripcion}'
+ """
+#---------------------------------------------------
 class Pedido(models.Model):
     Numpedido = models.IntegerField()
     Fecha = models.DateField()
-    CodClie = models.CharField(max_length=8)        
+    CodClie = models.CharField(max_length=8)       

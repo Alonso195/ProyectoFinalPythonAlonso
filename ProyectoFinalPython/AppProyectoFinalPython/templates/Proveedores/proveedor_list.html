@@ -3,6 +3,23 @@
 {% load static %}
 
 {% block blockDinamico %}
+<section class="features-icons bg-light">
+  <div class="container">
+    <form action="{% url 'BuscarProveedor' %}" method="GET">{% csrf_token %}
+  
+      
+      <div class="form-floating mb-3 ">
+        <input class="form-control" name="codigo" type="text"/>
+        <label name="codigo">Codigo de Proveedor</label>
+    </div>
+  
+    <input class="btn btn-outline-primary btn-xl" id="submitButton" value="Buscar" type="submit">
+  
+    </form>
+
+  </div>
+</section>
+
 <section class="features-icons bg-light text-center">
   <div class="container">
        <!-- Contact Section Form-->
@@ -46,6 +63,10 @@
       <a type="button" class="btn btn-outline-primary" href="{% url 'CreaProveedores' %}">
         Nuevo Proveedor
       </a>
+
+      <br>
+      <br>
+      
   </div>
 </section>
 

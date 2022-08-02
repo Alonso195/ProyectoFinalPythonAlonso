@@ -1,0 +1,54 @@
+{% extends 'navBar.html'%}
+
+{% load static %}
+
+{% block blockDinamico %}
+<section class="features-icons bg-light text-center">
+  <div class="container">
+       <!-- Contact Section Form-->
+      <h1>Clientes</h1>
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Codigo de Cliente</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Provincia</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cliente in Clientes %}
+          <tr>
+            <th scope="row">
+              <a href="{% url 'DetalleClientes' cliente.id %}">
+                {{cliente.CodigoCliente}}
+              </a>
+              
+            </th>
+            <td>{{cliente.Nombre}}</td>
+            <td>{{cliente.Apellidos}}</td>
+            <td>{{cliente.Provincia}}</td>
+            <td>
+              <a type="button" class="btn btn-outline-primary" href="{% url 'ActualizaClientes' cliente.id %}">
+                Editar
+              </a>
+              <a type="button" class="btn btn-outline-danger" href="{% url 'EliminaClientes' cliente.id %}">
+                Eliminar
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+          
+        </tbody>
+      </table>
+    
+      <a type="button" class="btn btn-outline-primary" href="{% url 'CreaClientes' %}">
+        Nuevo Cliente
+      </a>
+  </div>
+</section>
+
+
+
+{% endblock blockDinamico %}

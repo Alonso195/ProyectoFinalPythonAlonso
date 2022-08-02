@@ -1,0 +1,59 @@
+{% extends 'navBar.html'%}
+
+{% load static %}
+
+{% block blockDinamico %}
+<section class="features-icons bg-light text-center">
+    <div class="container">
+         <!-- Contact Section Form-->
+        <h1>Actualizar Cliente</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7" >
+                
+                <form  action="{% url 'ActualizaClientes' cliente.id %}" method="POST">{% csrf_token %} 
+                    <!-- Name input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="Nombre" value={{cliente.Nombre}} type="text"/>
+                        <label name="Nombre">Nombre</label>
+                    </div>
+                    <!-- Apellidos input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="Apellidos" value={{cliente.Apellidos}} type="text"/>
+                        <label name="Apellidos">Apellidos</label>
+                    </div>
+                    <!-- CodigoProveedor address input-->
+                    <div class="form-floating mb-3">  
+                        <input class="form-control" name="CodigoCliente" value={{cliente.CodigoCliente}} type="text"/>
+                        <label name="CodigoCliente">Código Cliente</label>
+                    </div>
+                    <!-- Cuit input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="Cuit" value={{cliente.Cuit}} type="text">
+                        <label name="Cuit">Cuit</label>
+                    </div>
+                    <!-- Provincia number input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="Provincia" value={{cliente.Provincia}} type="text" />
+                        <label name="Provincia">Provincia</label>
+                    </div>
+                    <!-- Localidad input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="Localidad" value={{cliente.Localidad}} type="text">
+                        <label name="Localidad">Localidad</label>
+                    </div>
+                    <!-- Direccion input-->
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" name="Direccion" type="text"style="height: 10rem">{{cliente.Direccion}}</textarea>
+                        <label name="Direccion">Dirección</label>
+                    </div>
+                    
+                    
+                    <!-- Submit Button-->
+                    <input class="btn btn-outline-primary btn-xl" id="submitButton" value="Guardar Cliente" type="submit">
+                </form>
+            </div>        
+        </div>
+
+    </div>
+</section>
+{% endblock blockDinamico %}

@@ -1,0 +1,30 @@
+{% extends 'navBar.html'%}
+
+{% load static %}
+
+{% block blockDinamico %}
+<section class="features-icons bg-light text-center">
+    <div class="container">        
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7" >
+                <div class="card">
+                    <h5 class="card-header">Detalle Cliente</h5>
+                    <div class="card-body">
+                      <h5 class="card-title">{{Cliente}}</h5>
+                      <p class="card-text">Provincia: {{Cliente.Provincia}}</p>
+                      <p class="card-text">Localidad: {{Cliente.Localidad}}</p>
+                      <p class="card-text">Dirección: {{Cliente.Direccion}}</p>
+                      <p class="card-text">Cuit: {{Cliente.Cuit}}</p>
+
+                      <a type="button" class="btn btn-outline-primary" href="{% url 'ListaClientes' %}">
+                        Volver
+                      </a>
+                    </div>
+                </div>
+               
+            </div>        
+        </div>
+
+    </div>
+</section>
+{% endblock blockDinamico %}
