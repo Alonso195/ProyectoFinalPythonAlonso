@@ -26,3 +26,22 @@ class ProveedorFormulario(forms.Form):
     Localidad = forms.CharField()  
     Direccion = forms.CharField()  
     Cuit = forms.CharField()
+
+# -------------------------------------------------------
+class ClienteFormulario(forms.Form):
+    CodigoCliente = forms.CharField()
+    Nombre = forms.CharField()
+    Apellidos = forms.CharField()  
+    Provincia = forms.CharField()  
+    Localidad = forms.CharField()  
+    Direccion = forms.CharField()  
+    Cuit = forms.CharField()
+
+class ArticuloFormulario(forms.Form):
+    CodigoArticulo = forms.CharField()
+    Descripcion = forms.CharField()
+    Color = forms.CharField()  
+    Talle = forms.CharField()  
+    Precio = forms.CharField()  
+    CodigoBarra = forms.CharField()  
+    

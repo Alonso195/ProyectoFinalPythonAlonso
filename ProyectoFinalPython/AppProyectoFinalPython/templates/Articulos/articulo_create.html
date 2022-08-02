@@ -1,0 +1,54 @@
+{% extends 'navBar.html'%}
+
+{% load static %}
+
+{% block blockDinamico %}
+<section class="features-icons bg-light text-center">
+    <div class="container">
+         <!-- Contact Section Form-->
+        <h1>Crear Articulo</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7" >
+                
+                <form  action="{% url 'CreaArticulos' %}" method="POST">{% csrf_token %} 
+                    <!-- Codigo input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="CodigoArticulo" type="text"/>
+                        <label name="Codigo">Codigo</label>
+                    </div>
+                    <!-- Apellidos descripcion-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="Descripcion" type="text"/>
+                        <label name="Descripcion">Descripcion</label>
+                    </div>
+                    <!-- Color address input-->
+                    <div class="form-floating mb-3">  
+                        <input class="form-control" name="Color" type="text"/>
+                        <label name="Color">Color Articulo</label>
+                    </div>
+                    <!-- Talle input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="Talle" type="text">
+                        <label name="Talle">Talle</label>
+                    </div>
+                    <!-- Precio input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="Precio" type="text" />
+                        <label name="Precio">Precio</label>
+                    </div>
+                    <!-- CodigoBarra input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="CodigoBarra" type="text">
+                        <label name="CodigoBarra">Codigo de Barra</label>
+                    </div>
+                                        
+                    
+                    <!-- Submit Button-->
+                    <input class="btn btn-outline-primary btn-xl" id="submitButton" value="Guardar Articulo" type="submit">
+                </form>
+            </div>        
+        </div>
+
+    </div>
+</section>
+{% endblock blockDinamico %}

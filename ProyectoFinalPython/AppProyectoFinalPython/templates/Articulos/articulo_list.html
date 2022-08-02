@@ -1,0 +1,56 @@
+{% extends 'navBar.html'%}
+
+{% load static %}
+
+{% block blockDinamico %}
+<section class="features-icons bg-light text-center">
+  <div class="container">
+       <!-- Contact Section Form-->
+      <h1>Articulos</h1>
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Codigo de Articulo</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Color</th>
+            <th scope="col">Talle</th>
+            <th scope="col">Codigo de Barras</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for Articulo in Articulos %}
+          <tr>
+            <th scope="row">
+              <a href="{% url 'DetalleArticulos' Articulo.id %}">
+                {{Articulo.CodigoArticulo}}
+              </a>
+              
+            </th>
+            <td>{{Articulo.Descripcion}}</td>
+            <td>{{Articulo.Color}}</td>
+            <td>{{Articulo.Talle}}</td>
+            <td>{{Articulo.Precio}}</td>
+            <td>
+              <a type="button" class="btn btn-outline-primary" href="{% url 'ActualizaArticulos' Articulo.id %}">
+                Editar
+              </a>
+              <a type="button" class="btn btn-outline-danger" href="{% url 'EliminaArticulos' Articulo.id %}">
+                Eliminar
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+          
+        </tbody>
+      </table>
+    
+      <a type="button" class="btn btn-outline-primary" href="{% url 'CreaArticulos' %}">
+        Nuevo Articulo
+      </a>
+  </div>
+</section>
+
+
+
+{% endblock blockDinamico %}

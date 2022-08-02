@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DetailView
 
 
-from AppProyectoFinalPython.models import Contact, Proveedor
-from AppProyectoFinalPython.forms import ContactFormulario, ProveedorFormulario
+from AppProyectoFinalPython.models import Contact, Proveedor,Cliente,Articulo
+from AppProyectoFinalPython.forms import ContactFormulario, ProveedorFormulario,ClienteFormulario,ArticuloFormulario
 
 def inicio(self):
     return render(self, "inicio.html")
@@ -57,4 +57,75 @@ class ProveedorDelete(DeleteView):
     model = Proveedor
     template_name = './Proveedores/proveedor_delete.html'
     success_url = '/listaProveedores/'
+
+#------------------- CLIENTES VIEWS -------------------#
+
+class ClienteList(ListView):
+
+    model = Cliente
+    template_name = './Clientes/cliente_list.html'
+    context_object_name = 'Clientes'
+
+class ClienteDetail(DetailView):
+
+    model = Cliente
+    template_name = './Clientes/cliente_detail.html'
+    context_object_name = 'Cliente'
+
+class ClienteCreate(CreateView):
+    model = Cliente
+    template_name = './Clientes/cliente_create.html'
+    form_class: ClienteFormulario
+    fields = [ "Nombre", "Apellidos", "CodigoCliente", "Cuit", "Provincia", "Localidad", "Direccion"]
+    success_url = '/listaClientes/' 
+
+
+class ClienteUpdate(UpdateView):
+
+    model = Cliente
+    template_name = './Clientes/Cliente_update.html'
+    fields = ('__all__')
+    success_url = '/listaClientes/'
+
+class ClienteDelete(DeleteView):
+
+    model = Cliente
+    template_name = './Clientes/cliente_delete.html'
+    success_url = '/listaClientes/'
+
+
+# ---------------------------Articulos 
+
+class ArticuloList(ListView):
+
+    model = Articulo
+    template_name = './Articulos/Articulo_list.html'
+    context_object_name = 'Articulos'
+
+class ArticuloDetail(DetailView):
+
+    model = Articulo
+    template_name = './Articulos/Articulos_detail.html'
+    context_object_name = 'Articulos'
+
+class ArticuloCreate(CreateView):
+    model = Articulo
+    template_name = './Articulos/Articulo_create.html'
+    form_class: ArticuloFormulario
+    fields = [ "CodigoArticulo", "Descripcion", "Color", "Talle", "Precio", "CodigoBarra"]
+    success_url = '/listaArticulos/' 
+
+
+class ArticuloUpdate(UpdateView):
+
+    model = Articulo
+    template_name = './Articulos/Articulo_update.html'
+    fields = ('__all__')
+    success_url = '/listaArticulos/'
+
+class ArticuloDelete(DeleteView):
+
+    model = Articulo
+    template_name = './Articulos/Articulo_delete.html'
+    success_url = '/listaArticulos/'
 
