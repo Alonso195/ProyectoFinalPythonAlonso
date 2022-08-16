@@ -1,6 +1,8 @@
 from django.urls import path
-from AppProyectoFinalPython.views import inicio, contactUs, buscarProveedor
+
+from AppProyectoFinalPython.views import inicio, contactUs, buscarProveedor, login_request
 from AppProyectoFinalPython.views import ProveedorCreate, ProveedorDelete, ProveedorDetail, ProveedorList, ProveedorUpdate,ClienteCreate, ClienteDelete, ClienteDetail, ClienteUpdate,ClienteList,ArticuloList,ArticuloDetail,ArticuloCreate,ArticuloUpdate,ArticuloDelete
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [    
     path('', inicio, name='Inicio'),
@@ -26,6 +28,9 @@ urlpatterns = [
     path('creaArticulos/', ArticuloCreate.as_view(), name="CreaArticulos"),    
     path('actualizaArticulos/<int:pk>', ArticuloUpdate.as_view(), name="ActualizaArticulos"),
     path('eliminaArticulos/<int:pk>', ArticuloDelete.as_view(), name="EliminaArticulos"),
+
+    path('Login', login_request, name='Login'),
+    path('logout/', LogoutView.as_view(template_name='logout.html'), name="Logout"),
 
 
 ]
