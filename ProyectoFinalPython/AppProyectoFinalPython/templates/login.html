@@ -1,0 +1,46 @@
+{% extends 'navBar.html'%}
+
+{% load static %}
+
+{% block blockDinamico %}
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="col-xl-6">
+                <div class="text-center text-white">
+                    <!-- Page heading-->
+                    <h1 class="mb-5">Iniciar Sesión</h1>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="features-icons bg-light">
+  <div class="container">
+    <h1>{{mensaje}}</h1>
+    <form action="{% url 'Login' %}" method="POST">{% csrf_token %}
+  
+    <!-- email input-->
+    <div class="form-floating mb-3">
+        <input class="form-control" name="username" type="text"/>
+        <label name="username">Usuario</label>
+    </div>
+    <!-- password input-->
+    <div class="form-floating mb-3">
+        <input class="form-control" name="password" type="password"/>
+        <label name="password">Contraseña</label>
+    </div>
+    
+    <input class="btn btn-outline-primary btn-xl" id="submitButton" value="Iniciar Sesión" type="submit">
+  
+    </form>
+
+  </div>
+</section>
+
+
+
+
+{% endblock blockDinamico %}
