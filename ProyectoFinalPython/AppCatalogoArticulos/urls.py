@@ -1,9 +1,10 @@
 from django.urls import path
 
+from AppCatalogoArticulos.views import lista_articulos
 
 urlpatterns = [    
  
-    #path('contacto/', contactUs, name='Contacto'),
+    path('catalogo/listaArticulos/', lista_articulos, name='Articulos'),
 
 
 ]
