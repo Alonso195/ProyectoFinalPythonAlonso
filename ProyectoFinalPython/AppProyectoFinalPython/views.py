@@ -14,6 +14,9 @@ from AppProyectoFinalPython.forms import ContactFormulario, ProveedorFormulario,
 def inicio(self):
     return render(self, "inicio.html")
 
+def acercaDeMi(self):
+    return render(self, "AcercaDeMi.html")
+
 def contactUs(self):
     
     if (self.method == 'POST'):
