@@ -57,6 +57,9 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'Articulos' %}">Catalogo Articulos</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'AcercaDeMi' %}">Acerca de Mi</a>
+                    </li>
                     {% if user.is_authenticated %}
                     
                     {% if url %}
@@ -106,7 +109,7 @@
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                         <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">Acerca de mí</a></li>
+                            <li class="list-inline-item"><a href="{% url 'AcercaDeMi' %}">Acerca de mí</a></li>
                             <li class="list-inline-item">⋅</li>
                             <li class="list-inline-item"><a href="{% url 'Contacto' %}">Contacto</a></li>
                             {% if not user.is_authenticated %}
