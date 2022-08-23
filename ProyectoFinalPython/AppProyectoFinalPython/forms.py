@@ -1,5 +1,7 @@
 from django import forms
 
+from AppProyectoFinalPython.models import Articulo
+
 class ContactFormulario(forms.Form):
     name = forms.CharField()
     email = forms.CharField()
@@ -44,4 +46,7 @@ class ArticuloFormulario(forms.Form):
     Talle = forms.CharField()  
     Precio = forms.CharField()  
     CodigoBarra = forms.CharField()  
+    class Meta:
+        model=Articulo
+        fields=('imagen',)
     

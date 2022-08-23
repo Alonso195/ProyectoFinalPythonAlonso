@@ -164,14 +164,14 @@ class ArticuloList(LoginRequiredMixin, ListView):
 class ArticuloDetail(LoginRequiredMixin, DetailView):
 
     model = Articulo
-    template_name = './Articulos/Articulos_detail.html'
-    context_object_name = 'Articulos'
+    template_name = './Articulos/articulo_detail.html'
+    context_object_name = 'Articulo'
 
 class ArticuloCreate(LoginRequiredMixin, CreateView):
     model = Articulo
     template_name = './Articulos/Articulo_create.html'
     form_class: ArticuloFormulario
-    fields = [ "CodigoArticulo", "Descripcion", "Color", "Talle", "Precio", "CodigoBarra"]
+    fields = [ "CodigoArticulo", "Descripcion", "Color", "Talle", "Precio", "CodigoBarra", "imagen"]
     success_url = '/listaArticulos/' 
 
 

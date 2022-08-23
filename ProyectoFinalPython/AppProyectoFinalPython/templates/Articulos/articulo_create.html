@@ -10,7 +10,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-7" >
                 
-                <form  action="{% url 'CreaArticulos' %}" method="POST">{% csrf_token %} 
+                <form enctype="multipart/form-data"
+                action="{% url 'CreaArticulos' %}" method="POST">{% csrf_token %} 
                     <!-- Codigo input-->
                     <div class="form-floating mb-3">
                         <input class="form-control" name="CodigoArticulo" type="text"/>
@@ -41,7 +42,10 @@
                         <input class="form-control" name="CodigoBarra" type="text">
                         <label name="CodigoBarra">Codigo de Barra</label>
                     </div>
-                                        
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="imagen" type="file">
+                        <label name="imagen">Imagen</label>
+                    </div>                    
                     
                     <!-- Submit Button-->
                     <input class="btn btn-outline-primary btn-xl" id="submitButton" value="Guardar Articulo" type="submit">
@@ -49,6 +53,11 @@
             </div>        
         </div>
 
+        <br>               
+        <br>
+        <br>
+        <br>               
+        <br>
     </div>
 </section>
 {% endblock blockDinamico %}
