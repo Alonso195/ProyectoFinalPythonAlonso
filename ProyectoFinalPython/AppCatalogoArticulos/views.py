@@ -6,8 +6,9 @@ from AppProyectoFinalPython.models import Articulo
 
 
 def lista_articulos(self):
+    articulos = Articulo.objects.all()
         
-    return render(self, "lista-articulos.html")
+    return render(self, "lista-articulos.html", {"Articulos": articulos})
 
 
 

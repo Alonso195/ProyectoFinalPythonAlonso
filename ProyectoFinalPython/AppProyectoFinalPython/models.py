@@ -57,6 +57,7 @@ class Articulo(models.Model):
     Precio = models.CharField(max_length=20)
     CodigoBarra = models.CharField(max_length=30)
     imagen = models.ImageField(upload_to='articulos', blank=True, null=True)
+    DescripcionLarga = models.CharField(max_length=300)
         
     def __str__(self) -> str:
         return f'Codigo: {self.CodigoArticulo} - Descripcion: {self.Descripcion}'

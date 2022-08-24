@@ -171,7 +171,7 @@ class ArticuloCreate(LoginRequiredMixin, CreateView):
     model = Articulo
     template_name = './Articulos/Articulo_create.html'
     form_class: ArticuloFormulario
-    fields = [ "CodigoArticulo", "Descripcion", "Color", "Talle", "Precio", "CodigoBarra", "imagen"]
+    fields = [ "CodigoArticulo", "Descripcion","DescripcionLarga",  "Color", "Talle", "Precio", "CodigoBarra", "imagen"]
     success_url = '/listaArticulos/' 
 
 
