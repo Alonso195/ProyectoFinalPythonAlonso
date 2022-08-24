@@ -11286,6 +11286,19 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.articulo {
+  
+  display: flex;
+  background-color: #06357a;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  justify-content: space-around;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+
 .features-icons {
   padding-top: 7rem;
   padding-bottom: 7rem;
