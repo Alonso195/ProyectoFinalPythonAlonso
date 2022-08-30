@@ -46,6 +46,7 @@ class ArticuloFormulario(forms.Form):
     Talle = forms.CharField()  
     Precio = forms.CharField()  
     CodigoBarra = forms.CharField()  
+    DescripcionLarga = forms.CharField()  
     class Meta:
         model=Articulo
         fields=('imagen',)
