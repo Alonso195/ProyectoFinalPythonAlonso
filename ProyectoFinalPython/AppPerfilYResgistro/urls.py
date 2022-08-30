@@ -1,9 +1,11 @@
 from django.urls import path
 
+from AppPerfilYResgistro.views import registro
+
 
 urlpatterns = [    
  
-    #path('contacto/', contactUs, name='Contacto'),
+    path('registro/', registro, name='Registro'),
 
 
 ]
