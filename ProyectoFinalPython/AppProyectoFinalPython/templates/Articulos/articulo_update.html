@@ -8,9 +8,21 @@
          <!-- Contact Section Form-->
         <h1>Actualizar Articulo</h1>
         <div class="row justify-content-center">
+            <div class="col-5">
+                {% if articulo.imagen %}
+                    <div class="col-md-6">
+                        <img class="card-img-top mb-5 mb-md-0" src="{{articulo.imagen.url}}" alt="..." />
+                    </div>
+                {% else %}
+                    <div class="col-md-6">
+                        <img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." />
+                    </div>                
+                {% endif %}
+            </div>
             <div class="col-lg-8 col-xl-7" >
-                
-                <form  action="{% url 'ActualizaArticulos' articulo.id %}" method="POST">{% csrf_token %} 
+                    
+                <form  enctype="multipart/form-data"
+                action="{% url 'ActualizaArticulos' articulo.id %}" method="POST">{% csrf_token %} 
                     <!-- Codigo input-->
                     <div class="form-floating mb-3">
                         <input class="form-control" name="CodigoArticulo" value={{articulo.CodigoArticulo}} type="text"/>
@@ -46,7 +58,10 @@
                         <label name="CodigoBarra">Codigo de Barra</label>
                     </div>
                     
-                    
+                    <div class="form-floating mb-3">
+                        <input class="form-control" name="imagen" type="file">
+                        <label name="imagen">Imagen</label>
+                    </div> 
                     
                     <!-- Submit Button-->
                     <input class="btn btn-outline-primary btn-xl" id="submitButton" value="Guardar Articulo" type="submit">
