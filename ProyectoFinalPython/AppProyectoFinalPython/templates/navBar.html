@@ -28,11 +28,12 @@
 
               {% if user.is_authenticated %}
                     
-              {% if url %}
-                  <img src="{{url}}" height="35px" alt="avatar">
-              {% endif %}              
+                          
               <a class="navbar-brand" href="{% url 'Inicio' %}">Usuario: {{user.username}}</a>              
               <a class="navbar-brand" href="{% url 'Logout' %}">Cerrar Sesión</a>
+              {% if url %}
+                  <img src="{{url}}" class="bg-info rounded-circle" width="45px" height="45px" alt="avatar">
+              {% endif %}
               {% else %}
                 <a class="navbar-brand" href="{% url 'Login' %}">Iniciar Sesión</a>
               {% endif %}
@@ -64,12 +65,15 @@
                     
                     {% if url %}
                         <img src="{{url}}" height="35px" alt="avatar">
-                    {% endif %}                                                                
+                    {% endif %}                                                            
                     <li class="nav-item">
                       <a class="nav-link " aria-current="page" href="{% url 'Logout' %}">Cerrar Sesión</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link " aria-current="page" href="{% url 'EditarPerfil' %}">Editar Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " aria-current="page" href="{% url 'EditarAvatar' %}">Editar Avatar</a>
                     </li>
                     
                     <li class="nav-item dropdown">

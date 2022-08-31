@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import UserChangeForm
 
+from AppProyectoFinalPython.models import Avatar
+
 
 class UsuarioRegistroForm(UserCreationForm):
     email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -24,9 +26,11 @@ class UserEditForm(UserChangeForm):
         widget=forms.HiddenInput(), required=False
     )
 
-    password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
-    password2 = forms.CharField(label="Repetir contraseña", widget=forms.PasswordInput)
-
+    password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password2 = forms.CharField(label="Repetir contraseña", widget=forms.PasswordInput(attrs={'class': 'form-control'}))    
+    email = forms.CharField(label="Correo Electrónico", widget=forms.TextInput(attrs={'class': 'form-control'}))    
+    first_name = forms.CharField(label="Nombres", widget=forms.TextInput(attrs={'class': 'form-control'}))    
+    last_name = forms.CharField(label="Apellidos", widget=forms.TextInput(attrs={'class': 'form-control'}))    
     class Meta:
         model = User
         fields = ['email', 'first_name', 'last_name']
@@ -37,3 +41,10 @@ class UserEditForm(UserChangeForm):
         if password2 != self.cleaned_data["password1"]:
             raise forms.ValidationError("Las contraseñas no coinciden..")
         return password2
+
+
+class AvatarFormulario(forms.ModelForm):
+
+    class Meta:
+        model=Avatar
+        fields=('imagen',)

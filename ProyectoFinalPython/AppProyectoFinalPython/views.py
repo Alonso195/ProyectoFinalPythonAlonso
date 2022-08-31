@@ -8,11 +8,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
-from AppProyectoFinalPython.models import Contact, Proveedor,Cliente,Articulo
+from AppProyectoFinalPython.models import Contact, Proveedor,Cliente,Articulo, Avatar
 from AppProyectoFinalPython.forms import ContactFormulario, ProveedorFormulario,ClienteFormulario,ArticuloFormulario
 
 def inicio(self):
-    return render(self, "inicio.html")
+    avatar = Avatar.objects.get(user=self.user.id)
+    print(avatar.imagen)
+    return render(self, "inicio.html", {"url": avatar.imagen.url})
 
 def acercaDeMi(self):
     return render(self, "AcercaDeMi.html")
