@@ -7,10 +7,10 @@ from django.contrib.auth.forms import UserChangeForm
 
 
 class UsuarioRegistroForm(UserCreationForm):
-    email = forms.EmailField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     password2 = forms.CharField(label='Repetir la Contraseña', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-    username = forms.CharField(max_length=150, widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    username = forms.CharField(max_length=150, widget=forms.TextInput(attrs={'class': 'form-control'}))
     
     class Meta:
         model = User
