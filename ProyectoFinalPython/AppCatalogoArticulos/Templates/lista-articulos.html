@@ -35,10 +35,52 @@
                 </div>
             </div>
             {% endfor %}
-            
+
+           
             
             
         </div>
+        <div class="row mt-3 justify-content-center" style="margin:auto; width:auto">
+            <nav>
+                <ul class="pagination">
+                    {% if cars.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link options-nav-back"
+                            href="{% if busqueda %} ?buscar={{ busqueda }}&page=1 {% else %} ?page=1 {% endif %}">Primera</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link options-nav-back"
+                            href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ cars.previous_page_number }} {% else %} ?page={{ cars.previous_page_number }} {% endif %}">&laquo;</a>
+                    </li>
+                    {% endif %}
+
+                    {% for pagina in paginas %}
+
+                    <li class="page-item{% if pagina_actual == pagina %} active {% endif %}">
+                        <a class="page-link options-nav"
+                            href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ pagina }} {% else %} ?page={{ pagina }} {% endif %}">
+                            {{pagina}}
+                        </a>
+                    </li>
+                    {% endfor %}
+
+                    {% if cars.has_next %}
+                    <li class="page-item">
+                        <a class="page-link options-nav-next"
+                            href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ cars.next_page_number }} {% else %} ?page={{ cars.next_page_number }} {% endif %}">&raquo;
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link options-nav-next"
+                            href="{% if busqueda %} ?buscar={{ busqueda }}&page={{ cars.paginator.num_pages }} {% else %} ?page={{ cars.paginator.num_pages }} {% endif %}">
+                            Última
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        
     </div>
 </section>
 

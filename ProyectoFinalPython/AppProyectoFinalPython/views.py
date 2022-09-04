@@ -31,6 +31,13 @@ def acercaDeMi(self):
     
 
 def contactUs(self):
+    avatar = Avatar()
+    try:        
+        avatar = Avatar.objects.get(user=self.user.id)            
+        #return render(self, "inicio.html", {"url": avatar.imagen.url})
+    except:
+        print("No hay datos")
+        #return render(self, "inicio.html", {"url": NULL})
     
     if (self.method == 'POST'):
         contactFormulario = ContactFormulario(self.POST)
@@ -40,10 +47,15 @@ def contactUs(self):
             data = contactFormulario.cleaned_data
             contact = Contact(name=data['name'], email=data['email'], phone=data['phone'], message=data['message'])
             contact.save()
-            return render(self,'inicio.html')
+            #return render(self,'inicio.html', {"url": avatar.imagen.url})
+            return redirect('/')
+
     else:
-        
-        return render(self, "contactUs.html")
+        if avatar.imagen:
+            return render(self, "contactUs.html", {"url": avatar.imagen.url})
+        else:
+            return render(self, "contactUs.html")
+
 
 def buscarProveedor(request):
  

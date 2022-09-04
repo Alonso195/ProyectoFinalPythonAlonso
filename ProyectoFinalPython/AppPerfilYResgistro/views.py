@@ -11,6 +11,11 @@ from AppProyectoFinalPython.models import Avatar
 
 
 def registro(request):
+    avatar = Avatar()
+    try:        
+        avatar = Avatar.objects.get(user=request.user.id)        
+    except:
+        print("No hay datos")
 
     if request.method == 'POST':
 
@@ -23,21 +28,29 @@ def registro(request):
             form.save()
 
             #return render(request, "inicio.html", {"mensaje": f'Usuario {username} creado'})
-            return redirect('/')
+            return redirect('/Login')
 
 
     else:
 
         form = UsuarioRegistroForm()
 
-    return render(request, "registro.html", {"miFormulario": form})
+    contexto = {"miFormulario": form}
+
+    if(avatar.imagen):        
+        contexto["url"] = avatar.imagen.url
+
+    return render(request, "registro.html", contexto)
 
 
 @login_required
 def editar_perfil(request):
+    avatar = Avatar()
+    try:        
+        avatar = Avatar.objects.get(user=request.user.id)        
+    except:
+        print("No hay datos")
     
-    print('method:', request.method)
-    print('post:', request.POST)
 
     usuario = request.user
 
@@ -67,12 +80,21 @@ def editar_perfil(request):
 
         miFormulario = UserEditForm(instance=request.user)
 
-    return render(request, "editarPerfil.html", {"miFormulario": miFormulario})
+    contexto = {"miFormulario": miFormulario}
 
+    if(avatar.imagen):        
+        contexto["url"] = avatar.imagen.url
+
+    return render(request, "editarPerfil.html", contexto)
+
+@login_required
 def agregar_avatar(request):
 
-    print('method:', request.method)
-    print('post:', request.POST)
+    avatar = Avatar()
+    try:        
+        avatar = Avatar.objects.get(user=request.user.id)        
+    except:
+        print("No hay datos")
 
     if request.method == 'POST':
 
@@ -91,10 +113,16 @@ def agregar_avatar(request):
             print(avatar.imagen)
             avatar.save()
 
-            return render(request, 'inicio.html', {"mensaje": "Avatar cargado..."})
+            #return render(request, 'inicio.html', {"mensaje": "Avatar cargado..."})
+            return redirect('/editar-avatar')
+
 
     else:
 
         miFormulario = AvatarFormulario()
 
-    return render(request, "agregarAvatar.html", {"miFormulario": miFormulario})
+    contexto = {"miFormulario": miFormulario}
+
+    if(avatar.imagen):        
+        contexto["url"] = avatar.imagen.url
+    return render(request, "agregarAvatar.html", contexto)
