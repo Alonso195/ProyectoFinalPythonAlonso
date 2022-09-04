@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Contact(models.Model):
@@ -20,20 +21,6 @@ class Proveedor(models.Model):
 
     def __str__(self) -> str:
         return f'Nombre: {self.Nombre} {self.Apellidos} - Código Proveedor: {self.CodigoProveedor}'
-
-""" 
-class Articulos(models.Model):
-    CodItm = models.CharField(max_length=8, unique=True) # se hace unique para que sea codigo unico
-    Descripcion = models.CharField(max_length=20)
-    DiasGarantia = models.IntegerField()
-
-    def __str__(self) -> str:
-        return f'{self.CodItm} - {self.Descripcion}'
-    class Meta():
-        verbose_name_plural = 'Articulos'
-        ordering = ('Descripcion','-CodItm') # desciendiente por coditm
-        unique_together = ('CodItm', 'Descripcion') # de esta forma nose puden repetir ni nombre ni descricopnm ala vez
- """
 
 
 class Cliente(models.Model):
@@ -62,19 +49,13 @@ class Articulo(models.Model):
     def __str__(self) -> str:
         return f'Codigo: {self.CodigoArticulo} - Descripcion: {self.Descripcion}'
 
-""" class Articulo2(models.Model):
-    CodigoArticulo = models.CharField(max_length=8)
-    Descripcion = models.CharField(max_length=30)
-    Color = models.CharField(max_length=30)
-    Talle = models.CharField(max_length=20)
-    Precio = models.CharField(max_length=20)
-    CodigoBarra = models.CharField(max_length=30)
-        
-    def __str__(self) -> str:
-        return f'Codigo: {self.CodigoArticulo} - Descripcion: {self.Descripcion}'
- """
+
 #---------------------------------------------------
 class Pedido(models.Model):
     Numpedido = models.IntegerField()
     Fecha = models.DateField()
     CodClie = models.CharField(max_length=8)       
+
+class Avatar(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to='avatares', blank=True, null=True) 

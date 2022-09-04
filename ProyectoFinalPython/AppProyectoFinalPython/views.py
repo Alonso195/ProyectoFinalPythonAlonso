@@ -1,5 +1,6 @@
 
-from django.shortcuts import render
+from asyncio.windows_events import NULL
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DetailView
@@ -8,16 +9,35 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
-from AppProyectoFinalPython.models import Contact, Proveedor,Cliente,Articulo
+from AppProyectoFinalPython.models import Contact, Proveedor,Cliente,Articulo, Avatar
 from AppProyectoFinalPython.forms import ContactFormulario, ProveedorFormulario,ClienteFormulario,ArticuloFormulario
 
 def inicio(self):
-    return render(self, "inicio.html")
+
+    try:        
+        avatar = Avatar.objects.get(user=self.user.id)            
+        return render(self, "inicio.html", {"url": avatar.imagen.url})
+    except:
+        return render(self, "inicio.html", {"url": NULL})
+
+    
 
 def acercaDeMi(self):
-    return render(self, "AcercaDeMi.html")
+    try:        
+        avatar = Avatar.objects.get(user=self.user.id)            
+        return render(self, "AcercaDeMi.html", {"url": avatar.imagen.url})
+    except:
+        return render(self, "AcercaDeMi.html")
+    
 
 def contactUs(self):
+    avatar = Avatar()
+    try:        
+        avatar = Avatar.objects.get(user=self.user.id)            
+        #return render(self, "inicio.html", {"url": avatar.imagen.url})
+    except:
+        print("No hay datos")
+        #return render(self, "inicio.html", {"url": NULL})
     
     if (self.method == 'POST'):
         contactFormulario = ContactFormulario(self.POST)
@@ -27,10 +47,15 @@ def contactUs(self):
             data = contactFormulario.cleaned_data
             contact = Contact(name=data['name'], email=data['email'], phone=data['phone'], message=data['message'])
             contact.save()
-            return render(self,'inicio.html')
+            #return render(self,'inicio.html', {"url": avatar.imagen.url})
+            return redirect('/')
+
     else:
-        
-        return render(self, "contactUs.html")
+        if avatar.imagen:
+            return render(self, "contactUs.html", {"url": avatar.imagen.url})
+        else:
+            return render(self, "contactUs.html")
+
 
 def buscarProveedor(request):
  
@@ -69,7 +94,8 @@ def login_request(request):
 
                 login(request, user)
 
-                return render(request, "inicio.html", {"mensaje": f'Bienvenido {usuario}'})
+                #return render(request, "inicio.html", {"mensaje": f'Bienvenido {usuario}'})
+                return redirect('/')
 
             else:
 

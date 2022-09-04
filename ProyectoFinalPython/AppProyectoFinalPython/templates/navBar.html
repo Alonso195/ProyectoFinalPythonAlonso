@@ -23,16 +23,17 @@
         <!-- Navigation-->
         <nav class="navbar navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
-              <a class="navbar-brand" href="{% url 'Inicio' %}">Zapateria App</a>
+              <a class="navbar-brand" href="{% url 'Inicio' %}">Diuff Calzados</a>
               
 
               {% if user.is_authenticated %}
                     
-              {% if url %}
-                  <img src="{{url}}" height="35px" alt="avatar">
-              {% endif %}              
+                          
               <a class="navbar-brand" href="{% url 'Inicio' %}">Usuario: {{user.username}}</a>              
               <a class="navbar-brand" href="{% url 'Logout' %}">Cerrar Sesión</a>
+              {% if url %}
+                  <img src="{{url}}" class="bg-info rounded-circle" width="45px" height="45px" alt="avatar">
+              {% endif %}
               {% else %}
                 <a class="navbar-brand" href="{% url 'Login' %}">Iniciar Sesión</a>
               {% endif %}
@@ -62,11 +63,15 @@
                     </li>
                     {% if user.is_authenticated %}
                     
-                    {% if url %}
-                        <img src="{{url}}" height="35px" alt="avatar">
-                    {% endif %}                                                                
+                                                                              
                     <li class="nav-item">
                       <a class="nav-link " aria-current="page" href="{% url 'Logout' %}">Cerrar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " aria-current="page" href="{% url 'EditarPerfil' %}">Editar Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " aria-current="page" href="{% url 'EditarAvatar' %}">Editar Avatar</a>
                     </li>
                     
                     <li class="nav-item dropdown">
@@ -116,11 +121,10 @@
                             <li class="list-inline-item">⋅</li>
 
                             <li class="list-inline-item"><a href="{% url 'Login' %}">Login</a></li>
-                            {% endif %}
                             <li class="list-inline-item">⋅</li>
-
                             <li class="list-inline-item"><a href="{% url 'Registro' %}">Registrarse</a></li>
                             <li class="list-inline-item">⋅</li>
+                            {% endif %}
                             
                         </ul>
                         <p class="text-muted small mb-4 mb-lg-0">&copy; Zapateria 2022. Todos los derechos reservados.</p>

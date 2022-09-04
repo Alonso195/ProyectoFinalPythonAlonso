@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from AppProyectoFinalPython.models import  Cliente, Pedido, Proveedor,Articulo
+from AppProyectoFinalPython.models import Avatar
 
 # Register your models here.
     
@@ -22,5 +23,6 @@ class ArticuloAdmin(admin.ModelAdmin):
 admin.site.register(Articulo,ArticuloAdmin)
 admin.site.register(Cliente,ClientesAdmin)
 admin.site.register(Pedido)    
+admin.site.register(Avatar)    
 admin.site.register(Proveedor, ProveedorAdmin)    
  

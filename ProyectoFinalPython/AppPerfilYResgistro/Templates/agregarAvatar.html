@@ -9,7 +9,7 @@
             <div class="col-xl-6">
                 <div class="text-center text-white">
                     <!-- Page heading-->
-                    <h1 class="mb-5">Registrarse</h1>
+                    <h1 class="mb-5">Agregar Avatar</h1>
                    
                 </div>
             </div>
@@ -20,7 +20,8 @@
 <section class="features-icons bg-light">
   <div class="container">
     <h1>{{mensaje}}</h1>
-    <form action="{% url 'Registro' %}" method="POST">
+   
+    <form action="{% url 'EditarAvatar' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-floating mb-3">
             {{miFormulario.as_p}}
@@ -30,7 +31,14 @@
         <input type="submit" value="Registrar">
 
     </form> 
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
   </div>
 </section>
 
