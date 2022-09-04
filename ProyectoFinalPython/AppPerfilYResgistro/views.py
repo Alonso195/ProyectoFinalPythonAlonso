@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -22,7 +22,9 @@ def registro(request):
 
             form.save()
 
-            return render(request, "inicio.html", {"mensaje": f'Usuario {username} creado'})
+            #return render(request, "inicio.html", {"mensaje": f'Usuario {username} creado'})
+            return redirect('/')
+
 
     else:
 
@@ -58,7 +60,8 @@ def editar_perfil(request):
             #user.save()
             usuario.save()
 
-            return render(request, "inicio.html", {"mensaje": "Datos actualizados con éxito..."})
+            #return render(request, "inicio.html", {"mensaje": "Datos actualizados con éxito..."})
+            return redirect('/')
 
     else:
 
@@ -76,9 +79,14 @@ def agregar_avatar(request):
         miFormulario = AvatarFormulario(request.POST, request.FILES)
 
         if miFormulario.is_valid():
-
-            data = miFormulario.cleaned_data
-            #u = User.objects.get(user_name = request.user)
+            try:
+                record = Avatar.objects.get(user_id=request.user.id)
+                if record.id:
+                    record.delete()
+            except:
+                print("No hay datos")
+            
+            
             avatar = Avatar(user=request.user, imagen=miFormulario.cleaned_data['imagen'])
             print(avatar.imagen)
             avatar.save()

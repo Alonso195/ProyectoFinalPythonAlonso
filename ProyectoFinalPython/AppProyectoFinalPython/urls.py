@@ -29,7 +29,7 @@ urlpatterns = [
     path('actualizaArticulos/<int:pk>', ArticuloUpdate.as_view(), name="ActualizaArticulos"),
     path('eliminaArticulos/<int:pk>', ArticuloDelete.as_view(), name="EliminaArticulos"),
 
-    path('Login', login_request, name='Login'),
+    path('Login/', login_request, name='Login'),
     path('logout/', LogoutView.as_view(template_name='logout.html'), name="Logout"),
 
 

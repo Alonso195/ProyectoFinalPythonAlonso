@@ -1,5 +1,6 @@
 
-from django.shortcuts import render
+from asyncio.windows_events import NULL
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DetailView
@@ -12,12 +13,22 @@ from AppProyectoFinalPython.models import Contact, Proveedor,Cliente,Articulo, A
 from AppProyectoFinalPython.forms import ContactFormulario, ProveedorFormulario,ClienteFormulario,ArticuloFormulario
 
 def inicio(self):
-    avatar = Avatar.objects.get(user=self.user.id)
-    print(avatar.imagen)
-    return render(self, "inicio.html", {"url": avatar.imagen.url})
+
+    try:        
+        avatar = Avatar.objects.get(user=self.user.id)            
+        return render(self, "inicio.html", {"url": avatar.imagen.url})
+    except:
+        return render(self, "inicio.html", {"url": NULL})
+
+    
 
 def acercaDeMi(self):
-    return render(self, "AcercaDeMi.html")
+    try:        
+        avatar = Avatar.objects.get(user=self.user.id)            
+        return render(self, "AcercaDeMi.html", {"url": avatar.imagen.url})
+    except:
+        return render(self, "AcercaDeMi.html")
+    
 
 def contactUs(self):
     
@@ -71,7 +82,8 @@ def login_request(request):
 
                 login(request, user)
 
-                return render(request, "inicio.html", {"mensaje": f'Bienvenido {usuario}'})
+                #return render(request, "inicio.html", {"mensaje": f'Bienvenido {usuario}'})
+                return redirect('/')
 
             else:
 
