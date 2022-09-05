@@ -22,6 +22,8 @@
 <img src="./ProyectoFinalPython/Resultados/formProveedores.png" width="350">
 <img src="./ProyectoFinalPython/Resultados/eliminarProveedor.png" width="350">
 
+## Video
+https://drive.google.com/drive/folders/1uTJas19zWro2glwsbtgp7pbRa_refTpj?usp=sharing
 
 ## Resultados Articulos CRUD
 
